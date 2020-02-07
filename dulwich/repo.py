@@ -66,6 +66,7 @@ from dulwich.hooks import (
     PreCommitShellHook,
     PostCommitShellHook,
     CommitMsgShellHook,
+    PostReceiveShellHook,
     )
 
 from dulwich.refs import (
@@ -722,6 +723,7 @@ class Repo(BaseRepo):
         self.hooks['pre-commit'] = PreCommitShellHook(self.controldir())
         self.hooks['commit-msg'] = CommitMsgShellHook(self.controldir())
         self.hooks['post-commit'] = PostCommitShellHook(self.controldir())
+        self.hooks['post-receive'] = PostReceiveShellHook(self.controldir())
 
     @classmethod
     def discover(cls, start='.'):
